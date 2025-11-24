@@ -45,7 +45,7 @@ const ProductCard = ({ product }) => {
             transition={{ duration: 0.4 }}
             src={product.image}
             alt={product.name}
-            className="object-cover w-full h-full"
+            className="object-contain w-full h-full"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-neutral-400 bg-neutral-50">

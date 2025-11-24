@@ -1,6 +1,6 @@
 import { Search, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router";
 import supabase from "@/lib/supabase";
 
@@ -153,7 +153,7 @@ const SearchBar = () => {
                             <img
                               src={product.image}
                               alt={product.name}
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-contain"
                             />
                           </div>
                           <div className="flex-1 min-w-0">

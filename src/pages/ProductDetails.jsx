@@ -88,7 +88,7 @@ const ProductDetail = () => {
           <img
             src={product.image}
             alt={product.name}
-            className="w-full max-w-md rounded-xl shadow-md object-cover"
+            className="w-full max-w-md rounded-xl shadow-md object-contain"
           />
         </div>
         <div className="flex flex-col gap-4">

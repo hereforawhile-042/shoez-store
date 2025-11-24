@@ -502,7 +502,7 @@ export default function AdminDashboard() {
                               <img
                                 src={p.image}
                                 alt={p.name}
-                                className="h-full w-full object-cover"
+                                className="h-full w-full object-contain"
                               />
                             ) : (
                               <span className="text-2xl">👟</span>

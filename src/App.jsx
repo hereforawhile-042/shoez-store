@@ -13,6 +13,7 @@ import Checkout from "./pages/Checkout";
 import AdminDashboard from "./pages/admin/admin";
 import { Profile } from "./pages/profile";
 import FavouritePage from "./pages/Favourites";
+import CartDrawer from "./components/CartDrawer";
 
 import { CartContext, FavouriteContext } from "./context/Contexts";
 
@@ -23,6 +24,8 @@ function App() {
   const [isHeart, setIsHeart] = useState(false);
 
   useEffect(() => localStorage.setItem("cart", JSON.stringify(cart)), [cart]);
+
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const formatCurrency = (value) =>
     new Intl.NumberFormat("en-US", {
@@ -77,10 +80,18 @@ function App() {
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
       toast.success("Added to cart");
+      setIsCartOpen(true);
     }
   };
 
-  const contextValue = { cart, setCart, addToCart, formatCurrency };
+  const contextValue = {
+    cart,
+    setCart,
+    addToCart,
+    formatCurrency,
+    isCartOpen,
+    setIsCartOpen,
+  };
   const favouriteValue = { favourite, setFavourite, isHeart, setIsHeart };
 
   console.log(favourite);
@@ -101,6 +112,7 @@ function App() {
           theme="light"
         />
         <Router>
+          <CartDrawer />
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/products" element={<ProductGrid />} />

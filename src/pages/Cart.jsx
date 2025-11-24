@@ -6,7 +6,7 @@ import Stepper from "@/components/ui/Stepper";
 import { CartContext } from "@/context/Contexts";
 import { Button } from "@/components/ui/button";
 import { FaCartPlus } from "react-icons/fa";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ShoppingBag, Trash2 } from "lucide-react";
 
 const Cart = () => {

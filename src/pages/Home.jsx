@@ -64,97 +64,92 @@ const Homepage = () => {
 
   return (
     <Layout noPadding={true}>
-      <section className="flex flex-col bg-neutral-50 md:p-10 p-6 md:flex-row items-start md:h-auto md:pt-16 border border-t h-screen justify-between w-full overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col justify-center md:gap-8 gap-5 w-full md:w-1/2 text-center md:text-left"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold text-transparent bg-linear-to-br bg-clip-text from-neutral-900 via-neutral-700 to-black leading-snug tracking-tight">
-            Grab Up to 50% Off On Selected Shoes
-          </h2>
-
-          <p className="text-md w-full text-neutral-600 md:w-9/12 mx-auto md:mx-0">
-            Step into comfort and style. From sneakers to casuals, our new
-            arrivals are designed to keep you moving with ease.
-          </p>
-
-          <div className="flex items-center gap-4 justify-center md:justify-start">
-            <Button
-              className="px-12 py-5 text-base rounded-full bg-neutral-900 hover:bg-neutral-700 text-white transition transform hover:scale-105 active:scale-95"
-              onClick={() => navigate("/products")}
-            >
-              Shop Now
-            </Button>
-          </div>
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="flex md:gap-2 md:flex-row flex-col gap-1 md:h-20"
-          >
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col items-center justify-center md:border-r md:border-gray-400 md:p-5 md:gap-0.5 gap-2"
-            >
-              <span className="text-3xl tracking-wide font-semibold">200+</span>
-              <span className="text-gray-500 text-sm font-light">
-                International Brands
-              </span>
-            </motion.div>
-            <motion.div
-              variants={itemVariants}
-              className="flex justify-center items-center flex-col md:border-r md:border-gray-400 md:p-5 md:gap-0.5 gap-2"
-            >
-              <span className="text-3xl tracking-wide font-semibold">
-                1000+
-              </span>
-              <span className="text-gray-500 text-sm font-light">
-                High Quality Products
-              </span>
-            </motion.div>
-            <motion.div
-              variants={itemVariants}
-              className="flex justify-center flex-col items-center md:p-5 md:gap-0.5 gap-2"
-            >
-              <span className="text-3xl tracking-wide font-semibold">
-                20,000+
-              </span>
-              <span className="text-gray-500 text-sm font-light">
-                Happy Customers
-              </span>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="w-full md:w-1/2 mt-8 md:mt-0"
-        >
+      <section className="relative h-screen w-full overflow-hidden">
+        {/* Background Carousel */}
+        <div className="absolute inset-0 z-0 bg-neutral-950">
           <Carousel
-            className="w-full"
+            className="w-full h-full"
             plugins={[
               Autoplay({
                 delay: 4000,
               }),
             ]}
           >
-            <CarouselContent className="rounded-2xl">
+            <CarouselContent className="h-full ml-0">
               {[caro2, caro4, caro1, caro5].map((img, idx) => (
-                <CarouselItem key={idx}>
+                <CarouselItem key={idx} className="pl-0 h-full">
                   <img
                     src={img}
                     alt="Sneaker"
-                    className="w-full h-[300px] md:h-[420px] object-cover rounded-2xl shadow-md"
+                    className="w-full h-full object-contain"
                   />
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
-        </motion.div>
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] z-10" />
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-20 h-full flex flex-col justify-center items-center text-center px-6 md:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-4xl mx-auto space-y-6"
+          >
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight drop-shadow-lg">
+              Grab Up to 50% Off <br className="hidden md:block" /> On Selected
+              Shoes
+            </h2>
+
+            <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto drop-shadow-md">
+              Step into comfort and style. From sneakers to casuals, our new
+              arrivals are designed to keep you moving with ease.
+            </p>
+
+            <div className="flex items-center justify-center gap-4 pt-4">
+              <Button
+                className="px-8 py-6 text-lg rounded-full bg-white text-black hover:bg-gray-100 transition transform hover:scale-105 active:scale-95 font-bold"
+                onClick={() => navigate("/products")}
+              >
+                Shop Now
+              </Button>
+            </div>
+          </motion.div>
+
+          {/* Stats */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="absolute bottom-10 left-0 right-0 flex justify-center gap-8 md:gap-16 text-white"
+          >
+            <motion.div variants={itemVariants} className="text-center">
+              <span className="block text-2xl md:text-3xl font-bold">200+</span>
+              <span className="text-xs md:text-sm text-gray-300 uppercase tracking-wider">
+                Brands
+              </span>
+            </motion.div>
+            <div className="w-px h-10 bg-gray-500/50" />
+            <motion.div variants={itemVariants} className="text-center">
+              <span className="block text-2xl md:text-3xl font-bold">
+                1000+
+              </span>
+              <span className="text-xs md:text-sm text-gray-300 uppercase tracking-wider">
+                Products
+              </span>
+            </motion.div>
+            <div className="w-px h-10 bg-gray-500/50" />
+            <motion.div variants={itemVariants} className="text-center">
+              <span className="block text-2xl md:text-3xl font-bold">20k+</span>
+              <span className="text-xs md:text-sm text-gray-300 uppercase tracking-wider">
+                Customers
+              </span>
+            </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       <section className="flex md:flex-row flex-col justify-center px-6 items-center py-6 place-items-center w-full">
