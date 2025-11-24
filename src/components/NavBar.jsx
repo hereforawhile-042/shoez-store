@@ -9,6 +9,8 @@ import { CartContext } from "@/context/Contexts";
 import { AnimatePresence } from "framer-motion";
 import SearchBar from "./SearchBar";
 
+import { motion } from "framer-motion";
+
 const BorderedButton = ({ children, onClick, className }) => (
   <motion.div
     whileHover={{ scale: 1.1 }}

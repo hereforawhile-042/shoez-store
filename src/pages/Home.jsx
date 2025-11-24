@@ -9,6 +9,8 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 
+import { motion } from "framer-motion";
+
 import caro1 from "../assets/images/Gemini_Generated_Image_nw3wvznw3wvznw3w (1).png";
 import caro2 from "../assets/images/Gemini_Generated_Image_iqkl6xiqkl6xiqkl.png";
 import caro4 from "../assets/images/Gemini_Generated_Image_nw3wvznw3wvznw3w (2).png";
