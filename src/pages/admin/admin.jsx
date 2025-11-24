@@ -16,6 +16,7 @@ import { CartContext } from "../../context/Contexts";
 import AddProductModal from "../../components/AddProductModal";
 import supabase from "../../lib/supabase";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
